@@ -49,5 +49,5 @@ function useProvideAuth() {
         user,
         signIn,
         logout,
-    }
+    };
 }
