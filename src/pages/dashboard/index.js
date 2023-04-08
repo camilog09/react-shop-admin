@@ -1,16 +1,6 @@
-const people = [
-  {
-    name: 'Jane Cooper',
-    title: 'Regional Paradigm Technician',
-    department: 'Optimization',
-    role: 'Admin',
-    email: 'jane.cooper@example.com',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-  },
-];
-
-import endPoints from "@services/api";
-import useFetch from "@hooks/useFetch";
+import endPoints from '@services/api';
+import useFetch from '@hooks/useFetch';
+import { Chart } from 'chart.js';
 
 const PRODUCT_LIMIT = 5;
 const PRODUCT_OFFSET = 5;
@@ -19,8 +9,18 @@ export default function Dashboard() {
   const products = useFetch(endPoints.products.getProducts(PRODUCT_LIMIT, PRODUCT_OFFSET));
   console.log(products);
 
+  const data = {
+    datasets: [{
+      label: 'Categories',
+      data: ['other', 'foods'],
+      borderWidth: 2,
+      backgroundColor: ['#ffbb11', '#c0c0c0', '#50AF95', '#f3ba2f', '#2a71d0'],
+    }]
+  };
+
   return (
     <>
+      <Chart className="mb-8 mt-2" chartData={data} />
       <div className="flex flex-col">
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
