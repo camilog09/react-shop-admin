@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { CheckIcon } from "@heroicons/react/20/solid";
 import Modal from "@common/Modal";
-import FormProduct from '@components/FormProduct';
+import FormProduct from "@components/FormProduct";
 import endPoints from "@services/api";
 import useAlert from "@hooks/useAlert";
 import Alert from "@common/Alert";
@@ -10,16 +10,16 @@ import Alert from "@common/Alert";
 export default function Products() {
   const [open, setOpen] = useState(false);
   const [products, setProducts] = useState([]);
-  const {alert, setAlert, toggleAlert} = useAlert();
+  const { alert, setAlert, toggleAlert } = useAlert();
 
   useEffect(() => {
-    async function getProducts(){
+    async function getProducts() {
       const response = await axios.get(endPoints.products.allProducts);
       setProducts(response.data);
     }
     try {
       getProducts();
-    } catch(error) {
+    } catch (error) {
       console.log(error);
     }
   }, [alert]);
