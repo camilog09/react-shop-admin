@@ -9,6 +9,8 @@ const people = [
   },
 ];
 
+import useFetch from "@hooks/useFetch";
+
 export default function Dashboard() {
   return (
     <>
